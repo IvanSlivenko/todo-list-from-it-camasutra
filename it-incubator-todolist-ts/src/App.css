@@ -1,0 +1,38 @@
+* {
+  background: #222222;
+  color: white;
+}
+.App {
+  padding: 30px;
+  display: flex;
+
+}
+
+.App > div {
+  margin-right: 50px;
+}
+button {
+  background: none;
+  border: 1px solid white;
+  border-radius: 15px;
+}
+input {
+  border-bottom: 1px solid white;
+  border-right:  none;
+  margin-right: 5px;
+}
+ul {
+  list-style: none;
+}
+
+.input-checkbox {
+  border: 1px solid white;
+  background: none;
+}
+
+.input-date {
+  border: 1px solid white;
+  background: none;
+  /*width: 150px;*/
+  /*height: 15px;*/
+}

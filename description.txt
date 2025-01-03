@@ -1,0 +1,10 @@
+https://youtu.be/pzs3a-d3kjM?list=PLcvhF2Wqh7DOFHUukzl5g4BP_Bbn6oM00
+
+-------------------------------------------------------------------
+npx create-react-app my-app --template typescript
+
+yarn create react-app it-incubator-todolist-ts --template typescript
+
+-------------------------------------------------------------------
+00 : 48 : 44
+
