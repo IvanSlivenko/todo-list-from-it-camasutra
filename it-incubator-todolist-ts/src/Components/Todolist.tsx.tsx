@@ -27,15 +27,32 @@ export function Todolist(props: PropsType) {
             <ul>
 
                 {
-                    props.tasks.map((t) => {
-                        return (
-                            <li key={t.id}>
-                                <input type="checkbox" checked={t.isDone} readOnly />
-                                <span>{t.title}</span>
-                                <span> rating : {t.rating} points</span>
-                            </li>
-                        );
-                    })
+                    props.tasks.map(t =>
+
+                        <li key={t.id}>
+                            <input type="checkbox" checked={t.isDone} readOnly/>
+                            <span>{t.title}</span>
+                            <span> rating : {t.rating} points</span>
+
+                            <button
+                                onClick={() => {
+                                    alert('click delete')
+                                }}
+                                style={{marginLeft: "5px"}}
+                            >
+                                delete
+                            </button>
+
+                            <button
+                                onClick={() => {
+                                    alert('click remove')
+                                }}
+                                style={{marginLeft: "5px"}}
+                            >
+                                remove
+                            </button>
+                        </li>
+                    )
                 }
 
 
