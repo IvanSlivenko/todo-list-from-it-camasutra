@@ -14,8 +14,8 @@ yarn create react-app it-incubator-todolist-ts --template typescript
 ====================================================================== Lesson 2
 https://youtu.be/an32Q6yqqfY?list=PLcvhF2Wqh7DOFHUukzl5g4BP_Bbn6oM00
 ----------------------------------------------------------------------
-
+shift + f 6
 
 ----------------------------------------------------------------------
-00 : 24 : 32
+00 : 42 : 25
 

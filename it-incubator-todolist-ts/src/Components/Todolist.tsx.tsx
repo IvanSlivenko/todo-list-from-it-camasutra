@@ -11,6 +11,7 @@ export type TaskType = {
 type PropsType = {
     title: string,
     tasks: Array<TaskType>
+    removeTask: Function
 
 
 }
@@ -23,7 +24,7 @@ export function Todolist(props: PropsType) {
             <div>
                 <input/>
                 <button>+</button>
-            </div>
+        </div>
             <ul>
 
                 {
@@ -35,9 +36,7 @@ export function Todolist(props: PropsType) {
                             <span> rating : {t.rating} points</span>
 
                             <button
-                                onClick={() => {
-                                    alert('click delete')
-                                }}
+                                onClick={() => props.removeTask(t.id)}
                                 style={{marginLeft: "5px"}}
                             >
                                 delete
@@ -45,7 +44,7 @@ export function Todolist(props: PropsType) {
 
                             <button
                                 onClick={() => {
-                                    alert('click remove')
+                                    alert(`Буде змінено ${t.title.toString()}  по id ${t.id}`)
                                 }}
                                 style={{marginLeft: "5px"}}
                             >
