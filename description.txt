@@ -17,5 +17,5 @@ https://youtu.be/an32Q6yqqfY?list=PLcvhF2Wqh7DOFHUukzl5g4BP_Bbn6oM00
 shift + f 6
 
 ----------------------------------------------------------------------
-00 : 42 : 25
+01 : 21 : 51
 
