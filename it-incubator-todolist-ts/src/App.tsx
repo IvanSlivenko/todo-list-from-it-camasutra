@@ -41,14 +41,14 @@ function App() {
         setTasks(filterTask);
     };
 
-    function  addTask(){
+    function  addTask(title: string){
         let newTask= {
             id: v1(),
-            title: "NewTask",
+            title: title,
             isDone: false,
             rating: 1
         }
-        let newTasks = [...tasks1,newTask];
+        let newTasks = [newTask,...tasks1];
         setTasks(newTasks)
     }
 
@@ -73,6 +73,7 @@ function App() {
                 tasks={tasksForTodolist}
                 removeTask = {removeTask}
                 changeFilter={changeFilter}
+                addTask={addTask}
 
             />
             {/*<Todolist title='Movies' tasks={tasks2}/>*/}
