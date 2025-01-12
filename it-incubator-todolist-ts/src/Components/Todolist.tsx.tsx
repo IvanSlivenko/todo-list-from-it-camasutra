@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState, KeyboardEvent} from "react";
+import React, {ChangeEvent, useState, KeyboardEvent, ChangeEventHandler} from "react";
 import {FilterValuesType} from "../App";
 
 export type TaskType = {
@@ -75,7 +75,7 @@ export function Todolist(props: PropsType) {
                             props.removeTask(t.id)
                         }
 
-                        const onStatusChangeHandler = () => props.changeStatus(t.id, t.isDone);
+                        const onStatusChangeHandler = (e: ChangeEventHandler<HTMLInputElement>) => props.changeStatus(t.id, t.isDone);
 
 
                         return <li key={t.id}>
