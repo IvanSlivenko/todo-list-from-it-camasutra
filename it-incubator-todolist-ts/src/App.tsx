@@ -59,16 +59,19 @@ function App() {
     function changeStatus(taskId: string, isDone: boolean) {
         let task = tasks1.find(t => t.id === taskId)
         if (task) {
-            setTasks((tasks1) =>
-                tasks1.map((t) =>
-                    t.id === taskId ? {...t, isDone: !isDone} : t
-                )
-            );
+            // setTasks((tasks1) =>
+            //     tasks1.map((t) =>
+            //         t.id === taskId ? {...t, isDone: !isDone} : t
+            //     )
+            // );
+
+            //------------------------------------------------------
+            task.isDone=isDone
         }
+        let copy=[...tasks1]
+        setTasks(copy)
+
     }
-
-
-
 
     let tasksForTodolist = tasks1;
     if (filter === "complited") {
@@ -88,7 +91,7 @@ function App() {
                 removeTask={removeTask}
                 changeFilter={changeFilter}
                 addTask={addTask}
-                changeStatus={changeStatus}
+                changeTaskStatus={changeStatus}
 
             />
             {/*<Todolist title='Movies' tasks={tasks2}/>*/}
