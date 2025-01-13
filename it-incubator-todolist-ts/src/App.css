@@ -36,3 +36,12 @@ ul {
   /*width: 150px;*/
   /*height: 15px;*/
 }
+
+.error {
+  border: red 1px solid
+}
+
+.error-message {
+  color: red;
+}
+
