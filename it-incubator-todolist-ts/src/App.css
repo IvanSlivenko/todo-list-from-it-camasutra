@@ -45,3 +45,14 @@ ul {
   color: red;
 }
 
+.active-filter {
+  background-color: aquamarine;
+  color: saddlebrown;
+  border: none;
+  margin-right: 5px;
+}
+
+.is-done {
+  opacity: 0.5;
+}
+
