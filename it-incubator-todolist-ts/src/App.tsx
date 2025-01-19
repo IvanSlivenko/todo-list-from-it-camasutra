@@ -33,7 +33,7 @@ function App() {
     //     console.log('resultTasks',resultTasks)
     // }
 //-------------------------------------------------------------------------
-    let [tasks, setTasks] = useState<Array<TaskType>>([
+    let [Oldtasks, setOldTasks] = useState<Array<TaskType>>([
         {id: v1(), title: "CSS", isDone: true, rating: 7},
         {id: v1(), title: "JS", isDone: false, rating: 8},
         {id: v1(), title: "React", isDone: true, rating: 8.5},
@@ -86,14 +86,39 @@ function App() {
 
 
 // ------------------------------------------------------------------------
+    let totolistId1 = v1();
+    let totdolistId2 = v1();
+    let totdolistId3 = v1();
+
+
 
     let [todolists, setTodolist] = useState<Array<TodoListType>>([
-        {id: v1(), title: "What to learn", filter: "active"},
-        {id: v1(), title: "What to boy", filter: "complited"},
-        {id: v1(), title: "What to read", filter: "all"},
+        {id: totolistId1, title: "What to learn", filter: "active"},
+        {id: totdolistId2, title: "What to boy", filter: "complited"},
+        {id: totdolistId3, title: "What to read", filter: "all"},
 
 
     ])
+
+    let [tasks, setTasks] = useState({
+        [totolistId1]: [
+            {id: v1(), title: "CSS", isDone: true, rating: 7},
+            {id: v1(), title: "JS", isDone: false, rating: 8},
+            {id: v1(), title: "React", isDone: true, rating: 8.5},
+            {id: v1(), title: "Redux", isDone: false, rating: 9}
+        ],
+        [totdolistId2]: [
+            {id: v1(), title: "Book", isDone: true, rating: 7},
+            {id: v1(), title: "Milk", isDone: false, rating: 8},
+        ],
+        [totdolistId3]: [
+            {id: v1(), title: "Book", isDone: true, rating: 8.5},
+            {id: v1(), title: "Camedy", isDone: false, rating: 9}
+        ]
+
+    });
+
+    allTasks[totolistId1]
     return (
         <div className="App App-header">
             {
@@ -101,10 +126,10 @@ function App() {
 
                     let tasksForTodolist = tasks;
                     if (tl.filter === "complited") {
-                        tasksForTodolist = tasks.filter(t => t.isDone)
+                        tasksForTodolist = tasks[tl.id].filter(t => t.isDone)
                     }
                     if (tl.filter === "active") {
-                        tasksForTodolist = tasks.filter(t => !t.isDone)
+                        tasksForTodolist = tasks[tl.id].filter(t => !t.isDone)
                     }
 
 
