@@ -7,7 +7,7 @@ export type FilterValuesType = "all" | "complited" | "active"
 export type TodoListType = {
     id: string,
     title: string,
-    filter:FilterValuesType
+    filter: FilterValuesType
 
 
 }
@@ -59,8 +59,13 @@ function App() {
         setTasks(newTasks)
     }
 
-    function changeFilter(value: FilterValuesType) {
-        setFilter(value)
+    function changeFilter(value: FilterValuesType, todolistId: string) {
+        let todolist = todolists.find(tl => tl.id === todolistId)
+        if (todolist) {
+            todolist.filter = value;
+            setTodolist([...todolists])
+        }
+        // setFilter(value)
     }
 
     function changeStatus(taskId: string, isDone: boolean) {
@@ -73,29 +78,26 @@ function App() {
             //     )
             // );
             //------------------------------------------------------
-            task.isDone=isDone
+            task.isDone = isDone
         }
         setTasks([...tasks])
 
     }
 
 
-
-
 // ------------------------------------------------------------------------
 
-    let todolists: Array<TodoListType> = [
-        { id: v1(), title: "What to learn", filter: "active"},
-        { id: v1(), title: "What to boy", filter: "complited"},
-        { id: v1(), title: "What to read", filter: "all"},
+    let [todolists, setTodolist] = useState<Array<TodoListType>>([
+        {id: v1(), title: "What to learn", filter: "active"},
+        {id: v1(), title: "What to boy", filter: "complited"},
+        {id: v1(), title: "What to read", filter: "all"},
 
 
-
-    ]
+    ])
     return (
         <div className="App App-header">
             {
-                todolists.map( (tl)=>{
+                todolists.map((tl) => {
 
                     let tasksForTodolist = tasks;
                     if (tl.filter === "complited") {
@@ -107,6 +109,8 @@ function App() {
 
 
                     return <Todolist
+                        key={tl.id}
+                        id={tl.id}
                         title={tl.title}
                         tasks={tasksForTodolist}
                         removeTask={removeTask}
