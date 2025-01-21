@@ -64,29 +64,21 @@ function App() {
         setTasks({...tasksObj})
     }
 
+    function changeStatus(taskId: string, isDone: boolean, todolistId: string) {
+        let tasks = tasksObj[todolistId];
+        let task = tasks.find(t => t.id === taskId)
+        if (task) {
+            task.isDone = isDone;
+            setTasks({...tasksObj});
+        }
+    }
+
     function changeFilter(value: FilterValuesType, todolistId: string) {
         let todolist = todolists.find(tl => tl.id === todolistId)
         if (todolist) {
             todolist.filter = value;
             setTodolist([...todolists])
         }
-        // setFilter(value)
-    }
-
-    function changeStatus(taskId: string, isDone: boolean) {
-        let task = tasks.find(t => t.id === taskId)
-        if (task) {
-            //------------------------------------------------------
-            // setTasks((tasks1) =>
-            //     tasks1.map((t) =>
-            //         t.id === taskId ? {...t, isDone: !isDone} : t
-            //     )
-            // );
-            //------------------------------------------------------
-            task.isDone = isDone
-        }
-        setTasks([...tasks])
-
     }
 
 
@@ -123,13 +115,13 @@ function App() {
 
     });
 
-    allTasks[totolistId1]
+    // tasksObj[totolistId1]
     return (
         <div className="App App-header">
             {
                 todolists.map((tl) => {
 
-                    let tasksForTodolist = tasks[tl.id];
+                    let tasksForTodolist = tasksObj[tl.id];
                     if (tl.filter === "complited") {
                         tasksForTodolist = tasksForTodolist.filter(t => t.isDone)
                     }
