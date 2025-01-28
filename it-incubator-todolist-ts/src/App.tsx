@@ -99,7 +99,9 @@ function App() {
 
     let removeTodolist = (todolistId: string)=> {
         let filteredTodolist = todolists.filter(tl=> tl.id !== todolistId)
-        setTodolist(filteredTodolist)
+        setTodolist(filteredTodolist);
+        delete tasksObj[todolistId];
+        setTasks({...tasksObj});
     }
 
     let [tasksObj, setTasks] = useState({
@@ -123,6 +125,8 @@ function App() {
     // tasksObj[totolistId1]
     return (
         <div className="App App-header">
+            <input/>
+                <button>+</button>
             {
                 todolists.map((tl) => {
 
