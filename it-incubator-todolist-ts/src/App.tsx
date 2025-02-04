@@ -91,8 +91,8 @@ function App() {
 
 
     let [todolists, setTodolist] = useState<Array<TodoListType>>([
-        {id: totolistId1, title: "What to learn", filter: "active"},
-        {id: totdolistId2, title: "What to boy", filter: "complited"},
+        {id: totolistId1, title: "What to learn", filter: "all"},
+        {id: totdolistId2, title: "What to boy", filter: "all"},
         {id: totdolistId3, title: "What to read", filter: "all"},
 
 
@@ -128,8 +128,8 @@ function App() {
         <div className="App App-header">
             {/*<input/>*/}
             {/*    <button>+</button>*/}
-            <AddItemForm id={"www"} addTask={()=>{
-                console.log()}}/>
+            <AddItemForm addItem={(title:string)=>{
+                console.log(String(title))}}/>
             {
                 todolists.map((tl) => {
 

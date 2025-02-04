@@ -1,8 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 
 type AddItemFormPropsType = {
-    id: string
-    addTask: (title: string, todolistId: string) => void
+    addItem: (title: string) => void
 
 }
 
@@ -21,7 +20,7 @@ export function AddItemForm(props: AddItemFormPropsType) {
         }
 
         if (newTaskTitle.trim() !== "") {
-            props.addTask(newTaskTitle, props.id);
+            props.addItem(newTaskTitle);
             setNewTaskTitle("");
             setError(null)
         } else {
@@ -32,7 +31,7 @@ export function AddItemForm(props: AddItemFormPropsType) {
     const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         setError(null)
         if (e.ctrlKey && e.key === "Enter" && newTaskTitle.trim() !== "") {
-            props.addTask(newTaskTitle, props.id);
+            props.addItem(newTaskTitle);
             setNewTaskTitle("");
         }
     };

@@ -25,37 +25,6 @@ type PropsType = {
 }
 
 export function Todolist(props: PropsType) {
-
-    // const [newTaskTitle, setNewTaskTitle] = useState("")
-    // const [error, setError] = useState<string | null>(null)
-
-    // const onNewTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    //     setNewTaskTitle(e.currentTarget.value)
-    // }
-
-    // const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    //     setError(null)
-    //     if (e.ctrlKey && e.key === "Enter" && newTaskTitle.trim() !== "") {
-    //         props.addTask(newTaskTitle,props.id);
-    //         setNewTaskTitle("");
-    //     }
-    // };
-
-    // const addTask = () => {
-    //     if (newTaskTitle.trim() === "херня") {
-    //         console.log("Ви написали слово - Херня -")
-    //         return
-    //     }
-    //
-    //     if (newTaskTitle.trim() !== "") {
-    //         props.addTask(newTaskTitle, props.id);
-    //         setNewTaskTitle("");
-    //         setError(null)
-    //     } else {
-    //         setError("Title is required")
-    //     }
-    // }
-
     const onAllClickHandler = () => {
         props.changeFilter("all", props.id)
     }
@@ -71,6 +40,10 @@ export function Todolist(props: PropsType) {
     const removeTodolist =() => {
         props.removeTodolist(props.id)}
 
+    const addTask = (title: string) =>{
+        props.addTask(title, props.id)
+    }
+
     return (
         <div>
             <h3>{props.title}
@@ -80,7 +53,7 @@ export function Todolist(props: PropsType) {
 
                 >X</button>
             </h3>
-            <AddItemForm id={props.id} addTask={props.addTask}/>
+            <AddItemForm  addItem={addTask}/>
             <ul>
 
                 {
