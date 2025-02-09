@@ -12,6 +12,9 @@ export type TodoListType = {
 
 
 }
+type TasckStateType = {
+    [key: string]: Array<TaskType>
+}
 
 function App() {
     // let tasks1: Array<TaskType> = [
@@ -78,7 +81,7 @@ function App() {
         let todolist = todolists.find(tl => tl.id === todolistId)
         if (todolist) {
             todolist.filter = value;
-            setTodolist([...todolists])
+            setTodolists([...todolists])
         }
     }
 
@@ -90,7 +93,7 @@ function App() {
 
 
 
-    let [todolists, setTodolist] = useState<Array<TodoListType>>([
+    let [todolists, setTodolists] = useState<Array<TodoListType>>([
         {id: totolistId1, title: "What to learn", filter: "all"},
         {id: totdolistId2, title: "What to boy", filter: "all"},
         {id: totdolistId3, title: "What to read", filter: "all"},
@@ -100,12 +103,12 @@ function App() {
 
     let removeTodolist = (todolistId: string)=> {
         let filteredTodolist = todolists.filter(tl=> tl.id !== todolistId)
-        setTodolist(filteredTodolist);
+        setTodolists(filteredTodolist);
         delete tasksObj[todolistId];
         setTasks({...tasksObj});
     }
 
-    let [tasksObj, setTasks] = useState({
+    let [tasksObj, setTasks] = useState<TasckStateType>({
         [totolistId1]: [
             {id: v1(), title: "CSS", isDone: true, rating: 7},
             {id: v1(), title: "JS", isDone: false, rating: 8},
@@ -123,13 +126,21 @@ function App() {
 
     });
 
-    // tasksObj[totolistId1]
+
+    function  addTodoList(title: string ){
+       let todolist: TodoListType = {
+           id: v1(),
+           filter:"all",
+           title: title
+       };
+        setTodolists([todolist,...todolists]);
+        setTasks({...tasksObj,[todolist.id]:[]
+        })
+    }
+
     return (
         <div className="App App-header">
-            {/*<input/>*/}
-            {/*    <button>+</button>*/}
-            <AddItemForm addItem={(title:string)=>{
-                console.log(String(title))}}/>
+            <AddItemForm addItem={addTodoList}/>
             {
                 todolists.map((tl) => {
 

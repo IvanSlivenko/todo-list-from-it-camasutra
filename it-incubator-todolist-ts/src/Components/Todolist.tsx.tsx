@@ -1,6 +1,7 @@
 import React, {ChangeEvent} from "react";
 import {FilterValuesType} from "../App";
 import {AddItemForm} from "./AddItemForm";
+import {EditableSpan} from "./EditableSpan";
 
 export type TaskType = {
     id: string,
@@ -78,7 +79,7 @@ export function Todolist(props: PropsType) {
 
                                 readOnly
                             />
-                            <span>{t.title}</span>
+                            <EditableSpan title={t.title}  />
                             <span> rating : {t.rating} points</span>
 
                             <button
@@ -117,3 +118,4 @@ export function Todolist(props: PropsType) {
         </div>
     )
 }
+
