@@ -19,8 +19,10 @@ type PropsType = {
     changeFilter: (value: FilterValuesType, todolistId: string) => void
     addTask: (title: string, todolistId: string) => void
     changeTaskStatus: (taskId: string, isDone: boolean, todolistId: string) => void;
+    changeTaskTitle: (taskId: string, newTitle: string,  todolistId: string) => void;
     filter: FilterValuesType;
-    removeTodolist:(todolistId: string) => void
+    removeTodolist:(todolistId: string) => void;
+    changeTodolistTitle: (id: string, newTitle: string) => void;
 
 
 }
@@ -41,13 +43,18 @@ export function Todolist(props: PropsType) {
     const removeTodolist =() => {
         props.removeTodolist(props.id)}
 
+    const changeTodolistTitle =(newTitle: string) => {
+        props.changeTodolistTitle(props.id, newTitle)
+    }
+
+
     const addTask = (title: string) =>{
         props.addTask(title, props.id)
     }
 
     return (
         <div>
-            <h3>{props.title}
+            <h3>  <EditableSpan title={props.title} onChange={changeTodolistTitle}/>
                 <button
                     className={'delete-todolist'}
                     onClick={removeTodolist}
@@ -65,8 +72,12 @@ export function Todolist(props: PropsType) {
                         }
 
                         const onStatusChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-                            // console.log(t.id + " "+ e.currentTarget.checked)
                             props.changeTaskStatus(t.id, e.currentTarget.checked, props.id);
+                        }
+
+                        const onChangeTitleHandler = (newValue: string) => {
+                            props.changeTaskTitle(t.id, newValue, props.id);
+
                         }
 
                         return <li key={t.id}
@@ -79,7 +90,10 @@ export function Todolist(props: PropsType) {
 
                                 readOnly
                             />
-                            <EditableSpan title={t.title}  />
+                            <EditableSpan
+                                title={t.title}
+                                onChange={onChangeTitleHandler}
+                            />
                             <span> rating : {t.rating} points</span>
 
                             <button
